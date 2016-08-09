@@ -1,0 +1,115 @@
+{% load humanize %}
+<div class="stats_bar row">
+        <div class="item-col-6">
+          <div data-intro="&lt;strong&gt;Beautiful Elements&lt;/strong&gt; &lt;br/&gt; If you are looking for a different UI, this is for you!." data-step="2" class="butpro butstyle">
+            <div class="sub"><h2>Campaigns</h2><span id="total_clientes">{{local.top.cmp.val}}</span></div>
+            <div class="stat">
+            <span class="{{local.top.cmp.flag}}">
+            {{local.top.cmp.pval}}%</span></div>
+          </div>
+        </div>
+        <div class="item-col-6">
+          <div class="butpro butstyle">
+            <div class="sub"><h2>Cost</h2><span>${{local.top.cost.val|intcomma}}</span></div>
+            <div class="stat"><span class="{{local.top.cost.flag}}"> {{local.top.cost.pval|intcomma}}%</span></div>
+          </div>
+        </div>
+        <div class="item-col-6">
+          <div class="butpro butstyle">
+            <div class="sub"><h2>Car sold</h2><span>{{local.top.sales.val|intcomma}}</span></div>
+            <div class="stat"><span class="{{local.top.sales.flag}}"> {{local.top.sales.pval|intcomma}}%</span></div>
+          </div> 
+        </div>
+        <div class="item-col-6"> 
+          <div class="butpro butstyle">
+            <div class="sub"><h2>Gross Profit</h2><span>${{local.top.grossprofit.val|intcomma}}</span></div>
+            <div class="stat"><span class="{{local.top.grossprofit.flag}}"> {{local.top.grossprofit.pval|intcomma}}%</span></div>
+          </div>  
+        </div>
+        <div class="item-col-6">
+          <div class="butpro butstyle">
+            <div class="sub"><h2>Repair Orders</h2><span>{{local.top.service.val|intcomma}}</span></div>
+            <div class="stat"><span class="{{local.top.service.flag}}"> {{local.top.service.pval|intcomma}}%</span></div>
+          </div>
+        </div>
+        <div class="item-col-6">
+          <div class="butpro butstyle">
+            <div class="sub"><h2>RO Total</h2><span>${{local.top.invoiced.val|intcomma}}</span></div>
+            <div class="stat"><span class="{{local.top.invoiced.flag}}"> {{local.top.invoiced.pval|intcomma}}%</span></div>
+          </div>  
+        </div>
+
+      </div>
+
+      <div class="campaign-dashboard-tbl">
+        <div class="block">
+          <div class="header no-border">
+            <h4 class="title">Campaign Details</h4>
+          </div>
+          <div class="content">
+          	<div class="row">
+            <table class=" table datatable table-stripe table-hovered">
+              <thead class="no-border">
+                <tr>
+                  <th>Campaign</th>
+                  <th>Type</th>
+                  <th>Mail Pieces</th>
+                  <th>Email</th>
+                  <th>Leads</th>
+                  <th>Cars Sold</th>
+                  <th>Gross Profit</th>
+                  <th>Repair Orders</th>
+                  <th>Total Invoiced</th>
+                  <th>Cost</th>
+                  <th>Days Active</th>
+                </tr>
+              </thead>
+              <tbody class="no-border-x no-border-y">
+                {% for n in local.cmp %}
+                <tr>
+                  <td><a href="{% url 'campaign_details_page' local.dealerkey n.keyid %}">{{n.name}}</a></td>
+                  {% if n.type == 1 %}
+                          <td>
+                            <i class="fa fa-car"></i>
+                            
+                          </td>
+                          {% elif n.type == 2 %}
+                          <td>
+                            
+                            <i class="fa fa-wrench"></i>
+                          </td>
+                          {% elif n.type == 3 %}
+                          <td>
+                            <i class="fa fa-car"></i>
+                            <i class="fa fa-wrench"></i>
+                          </td>
+                   {% endif %}
+                  <td>{{n.totalmail|intcomma}}</td>
+                  <td>{{n.totalemail|intcomma}}</td>
+                  <td>{{n.lead|intcomma}}</td>
+                  <td>{{n.sales|intcomma}}</td>
+                  <td>${{n.grossprofit|intcomma}}</td>
+                  <td>{{n.service|intcomma}}</td>
+                  <td>${{n.invoiced|intcomma}}</td>
+                  <td>${{n.totalcost|intcomma}}</td>
+                  <td>{{n.delay}}/{{n.tdays}}</td>
+                </tr>
+                {% endfor %}
+                
+              </tbody>
+            </table>
+          </div>
+       	</div>
+        </div>
+      </div>
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+    	
+    	$('.datatable').DataTable();
+    	  //Search input style
+      $('.dataTables_filter input').addClass('form-control').attr('placeholder','Search');
+      $('.dataTables_length select').addClass('form-control').val('25');  
+      //initialize the javascript
+    });
+ </script>           

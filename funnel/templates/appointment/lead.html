@@ -1,0 +1,65 @@
+{% load dealerfunnel_filters %}
+<div class="row">
+	    			<div role="grid" class="dataTables_wrapper clearfix" >
+	    			
+	    			    <table class="table-striped table-hovered dataTable">
+	    				<thead class="no-border">
+	    					<tr role="row">
+	    						<th class="no-border sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 21px;" aria-sort="ascending" aria-label=": activate to sort column descending"></th>
+	    						<th onclick="sorting(0)" style="cursor: pointer;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 218px;" aria-label="Name: activate to sort column ascending">Name</th>
+	    						<th onclick="sorting(1)" style="cursor: pointer;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 173px;" aria-label="Campaign: activate to sort column ascending">Campaign</th>
+	    						<th onclick="sorting(2)" style="cursor: pointer;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 219px;" aria-label="Date &amp;amp; Time: activate to sort column ascending">Date &amp; Time</th>
+	    						<th onclick="sorting(3)" style="cursor: pointer;" class="text-center sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 48px;" aria-label="Status: activate to sort column ascending">Status</th>
+	    						<th onclick="sorting(4)" style="cursor: pointer;" class="text-center sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 83px;" aria-label="Appt.Status: activate to sort column ascending">Appt.Status</th>
+	    						<th onclick="sorting(5)" style="cursor: pointer;" class="text-center sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 45px;" aria-label="Notes: activate to sort column ascending">Notes</th>
+	    						<th onclick="sorting(6)" style="cursor: pointer;" class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 95px;" aria-label="Last Activity: activate to sort column ascending">Last Activity</th>
+	    						<th style="cursor: pointer;" class="text-center no-border sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 87px;" aria-label="Action: activate to sort column ascending">Action</th>
+	    					</tr>
+	    				</thead>
+	    				
+	    			<tbody class="no-border-x no-border-y" role="alert" aria-live="polite" aria-relevant="all">
+	    			
+	    					{% for item in local.lead %}
+	    					<tr class="even">
+	    						<td class="text-center no-border  sorting_1"><input type="checkbox"></td>
+	    						<td class=" "><a href="#">{{item.fname}} {{item.lname}}</a></td>
+	    						<td class=" "><a href="#"><strong>{{item.campaign_name}}</strong></a></td>
+	    						<td class=" "><span id='datetime_{{item.barcode}}' class="date-time">{{item.appdate|date:"l, F dS"}} @ {{item.appdate|date:"P"}}</span></td>
+	    						<td class="text-center ">
+	    							<span id='label_{{item.barcode}}' >
+	    								<a onclick="labelchange('{{item.label}}','{{item.barcode}}')" class="label {{item.label|getlabelclass}}"  href="javascript:void(0)">{{item.label|getlabelname}}</a>
+	    							</span></td>
+	    						<td class="text-center ">
+	    						   <span id='appstatus_{{item.barcode}}' >
+	    						   		<a onclick="appstatuschange('{{item.appstatus}}','{{item.barcode}}')" class="label {{item.appstatus|getappstatusclass}}" href="javascript:void(0)">{{item.appstatus|getappstatusname}}</a></td>
+	    						   </span>
+	    						<td class="text-center "><a onclick="getnotemodal('{{item.barcode}}')" class="label label-primary" data-toggle="modal" href="javascript:void(0)"><span id='notes_{{item.barcode}}'>{{item.notecount}}</span></a></td>
+	    						<td class=" "><abbr class="timeago" title="{{item.lastvisitdate|date:"Y-m-d H:i:s"}}">{{item.lastvisitdate|date:"Y-m-d H:i:s"}}</abbr></td>
+	    						<td class="text-center no-border ">
+	    							<div class="dropdown table-action dropup">
+	    							<a data-toggle="dropdown" class="btn btn-default btn-sm" href="#">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a onclick="getreschedulemodal('{{item.barcode}}')" href="javascript:void(0)" data-toggle="modal">Reschedule</a></li>
+	    								<li><a href="http://dealerfunnel.com/reports/print/lead?cid={{item.customerid}}">Print</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					{% endfor %}
+	    					</tbody></table>
+	    					<div class="dataTables_info">Showing {{local.start}} to {{local.end}} of {{local.totalpage}} entries</div>
+	    					<div class="dataTables_paginate paging_two_button">
+	    						<a href='javascript:void(0)' onclick='prevpage()' role="button" tabindex="0" class="paginate_disabled_previous">Previous</a>
+	    						<a href='javascript:void(0)' onclick='nextpage()' role="button" tabindex="0" class="paginate_disabled_next">Next</a>
+	    					</div>
+	    				</div>
+	    		</div>
+<input type='hidden' id='totalpage' value = '{{local.totalpage}}'/>
+<input type='hidden' id='currentpage' value = '{{local.currentpage}}'/>
+<input type='hidden' id='sortcolum' value = '{{local.sortcolumn}}'/>
+<input type='hidden' id='sortflag' value = '{{local.sortflag}}'/> 
+<script>
+$(document).ready(function(){
+	$("abbr.timeago").timeago();
+	
+})
+</script>	    		

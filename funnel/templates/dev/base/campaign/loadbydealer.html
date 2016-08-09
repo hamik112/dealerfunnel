@@ -1,0 +1,95 @@
+      <div class="page-head ">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Campaigns</h2>
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li class="active">Campaigns</li>
+            </ol>
+        </div>
+        <div class="col-sm-6 text-right">
+            <div id="reportrange">
+            <i class="fa fa-calendar"></i>
+            <span></span> 
+            <b class="caret"></b>
+          </div>
+       </div>
+        </div>
+      </div>
+	<div id="ajaxload" class="cl-mcont">
+
+
+      
+		
+     </div>
+     <input value='{{local.startdate|date:"Y-m-d"}}' type="hidden" id="startdate"/>
+     <input value='{{local.enddate|date:"Y-m-d"}}' type="hidden" id="enddate"/>
+<script type="text/javascript">
+    function ajaxload()
+    {
+        var startdate = $('#startdate').val();
+        var enddate   = $('#enddate').val();
+        var selectedid = $('#selectedid').val();
+        $('#ajaxload').showLoading();
+    	$.get('/campaign/load/by/ajax/',
+	    {startdate:startdate,enddate:enddate,dealerid:selectedid},
+	    function(data, status) 
+	    {  
+          $('#ajaxload').html(data);
+          $('#ajaxload').hideLoading();
+          
+        });
+    }
+    $(document).ready(function(){
+    	
+    	ajaxload();
+    	$('#reportrange').daterangepicker(
+       {
+          startDate: moment().subtract('days',29),
+          endDate: moment(),
+          minDate: '01/01/2013',
+          maxDate: '12/31/2015',
+          dateLimit: { days: 60 },
+          showDropdowns: true,
+	      showWeekNumbers: true,
+          timePicker: false,
+          timePickerIncrement: 1,
+          timePicker12Hour: true,
+          ranges: {
+             'Today': [moment(), moment()],
+             'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+             'Last 7 Days': [moment().subtract('days', 6), moment()],
+             'Last 30 Days': [moment().subtract('days', 29), moment()],
+             'This Month': [moment().startOf('month'), moment().endOf('month')],
+             'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')],
+             'This Year' : [moment().startOf('year'), moment().endOf('year')],
+             'Last Year' : [moment().subtract('year', 1).startOf('year'), moment().subtract('year', 1).endOf('year')],
+                
+          },
+          opens: 'right',
+          buttonClasses: ['btn btn-default'],
+          applyClass: 'btn-small btn-primary',
+          cancelClass: 'btn-small btn-inverse',
+          format: 'MM/DD/YYYY',
+          separator: ' to ',
+          locale: {
+              applyLabel: 'Submit',
+              fromLabel: 'From',
+              toLabel: 'To',
+              customRangeLabel: 'Custom Range',
+              daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+              monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'JulMake Conquesty', 'August', 'September', 'October', 'November', 'December'],
+              firstDay: 1
+          }
+       },
+       function(start, end) 
+       {
+            $('#startdate').val(start.format('YYYY-MM-DD'));
+            $('#enddate').val(end.format('YYYY-MM-DD')); 
+            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            ajaxload();
+       }
+    );
+    $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+    });
+ </script>     

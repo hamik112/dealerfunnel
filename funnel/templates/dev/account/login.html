@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+  <title>Dealer Funnel</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+      
+  
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'js/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet" />
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+	<link rel="stylesheet" type="text/css" href="{% static 'js/jquery.gritter/css/jquery.gritter.css' %}" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'js/jquery.nanoscroller/nanoscroller.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'js/jquery.easypiechart/jquery.easy-pie-chart.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/bootstrap.switch/bootstrap-switch.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/jquery.select2/select2.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/bootstrap.slider/css/slider.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/intro.js/introjs.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'js/jquery.datatables/bootstrap-adapter/css/datatables.css' %}" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/dealerminer.css' %}" />
+
+</head>
+<body class="texture">
+
+  <div id="cl-wrapper" class="login-container">
+
+  <div class="middle-login">
+    <div class="block-flat">
+      <div class="header clearfix">              
+         <a class="navbar-brand" href="index.html"><strong>Dealer</strong>Funnel</a>
+      </div>
+      <div>
+        <form id="loginform" style="margin-bottom: 0px !important;" method="post" class="form-horizontal" action="/login/submit/">
+          {% csrf_token %}
+          <div class="content">
+            <h4 class="title">Login Access</h4>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" placeholder="Username" id="username" name="email" class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    <input type="password" placeholder="Password" id="password" name="password" class="form-control">
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+          <div class="foot">
+            <a class="btn btn-link" href="forgot-password-page.html">Forgot Password?</a>
+            <button  class="btn btn-primary" onclick ="setlogin()"  type="button">Log me in</button>
+          </div>
+          <input type="hidden" name="timeoffset" id="Timeoffset"  >
+        </form>
+      </div>
+    </div>
+    <div class="text-center out-links"><a href="#">&copy; 2015 DealerFunnel, LLC</a></div>
+  </div> 
+  
+</div>
+
+  <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+  <script src="{% static 'js/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+  </body>
+  <script>
+  function settimeoffset()
+  {
+	var d = new Date()
+	var n = d.getTimezoneOffset();
+	$('#Timeoffset').val(n);
+  }
+  
+  $(document).ready ( function () 
+  {
+    	settimeoffset()
+    	document.body.onkeypress = enterkey;
+  });
+  
+  function setlogin()
+  {
+	 
+     $('#loginform').submit();
+  }
+  function enterkey(e)
+ {
+            
+            var keyCode = (window.event) ? event.keyCode : e.keyCode;
+            if (keyCode == 13) {
+            	settimeoffset();
+                $('#loginform').submit();
+            }
+            
+            
+            
+ }
+  
+  
+  </script>
+</html>

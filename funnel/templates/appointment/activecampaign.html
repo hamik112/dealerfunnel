@@ -1,0 +1,4 @@
+<li><a onclick="filterbycampaing('n','All Campaigns')" href="javascript:void(0)">All Campaigns</a></li>
+{% for item in local.cmp %}
+<li><a onclick="filterbycampaing('{{item.id}}','{{item.name}}')" href="javascript:void(0)">{{item.name}}</a></li>
+{% endfor %}

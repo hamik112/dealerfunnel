@@ -1,0 +1,372 @@
+  <style>
+  .cursor_style
+  {
+    cursor:pointer;
+  }
+  </style>
+<div class="page-head ">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Dealership Setup</h2>
+            <ol class="breadcrumb">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Dealership</a></li>
+              <li class="active">Dealership Setup</li>
+            </ol>
+        </div>
+        </div>
+      </div>
+    <div class="cl-mcont">
+
+      <div class="campaign-dashboard-tbl">
+        <div class="block-flat">
+          <div class="dealership-setup">
+            <ul class="nav nav-tabs">
+              <li><a href="/dealership/setup/?id={{local.keyid}}">Dealer Info</a></li>
+              <li><a href="/dealership/setup/?id={{local.keyid}}">Triggers</a></li>
+              <li><a href="/campaign/setup/?id={{local.keyid}}">Campaign Builder</a></li>
+              <li class="active" ><a href="#">Campaign Planner</a></li>
+            </ul>
+            <div id="ajaxcontainer" class="tab-content">
+              
+                <div class="stats_bar campaign_planner_bars row">
+                  <div class="item-col-6">
+                    <div class="butpro butstyle" data-step="2" data-intro="<strong>Beautiful Elements</strong> <br/> If you are looking for a different UI, this is for you!.">
+                      <div class="sub"><h2>Campaigns</h2><span id="total_clientes">{{local.topbox.total}}</span></div>
+                      
+                    </div>
+                  </div>
+                  <div class="item-col-6">
+                    <div class="butpro butstyle">
+                      <div class="sub"><h2>Cost</h2><span>${{local.topbox.Cost}}</span></div>
+                      
+                    </div>
+                  </div>
+                  <div class="item-col-6">
+                    <div class="butpro butstyle">
+                      <div class="sub"><h2>Car sold</h2><span>{{local.topbox.Carsold}}</span></div>
+                      
+                    </div> 
+                  </div>
+                  <div class="item-col-6"> 
+                    <div class="butpro butstyle">
+                      <div class="sub"><h2>Gross Profit</h2><span>${{local.topbox.GrossProfit}}</span></div>
+                      
+                    </div>  
+                  </div>
+                  <div class="item-col-6">
+                    <div class="butpro butstyle">
+                      <div class="sub"><h2>Repair Orders</h2><span>{{local.topbox.RepairOrders}}</span></div>
+                      
+                    </div>
+                  </div>
+                  <div class="item-col-6">
+                    <div class="butpro butstyle">
+                      <div class="sub"><h2>RO Total</h2><span>${{local.topbox.ROTotal}}</span></div>
+                      
+                    </div>  
+                  </div>
+                </div>
+                <hr>
+                <div class="campaign-planner-table">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h4>Campaign Detail</h4>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="text-right">
+                        <div class="form-inline">
+                          <div class="form-group text-left">
+                            <label>Budget Month</label>
+                            <select id="budgetmonth" onchange="getbudgetmonth()" class="form-control multiselect"  multiple="multiple">
+                              <option {% if local.month.p0 == 1 %} selected {% endif %} value="0">No Select</option>
+                              <option {% if local.month.p1 == 1 %} selected {% endif %} value="1" >January</option>
+                              <option {% if local.month.p2 == 1 %} selected {% endif %} value="2">February</option>
+                              <option {% if local.month.p3 == 1 %} selected {% endif %} value="3">March</option>
+                              <option {% if local.month.p4 == 1 %} selected {% endif %} value="4">April</option>
+                              <option {% if local.month.p5 == 1 %} selected {% endif %} value="5">May</option>
+                              <option {% if local.month.p6 == 1 %} selected {% endif %} value="6">June</option>
+                              <option {% if local.month.p7 == 1 %} selected {% endif %} value="7">July</option>
+                              <option {% if local.month.p8 == 1 %} selected {% endif %} value="8">August</option>
+                              <option {% if local.month.p9 == 1 %} selected {% endif %} value="9">September</option>
+                              <option {% if local.month.p10 == 1 %} selected {% endif %} value="10">October</option>
+                              <option {% if local.month.p11 == 1 %} selected {% endif %} value="11">November</option>
+                              <option {% if local.month.p12 == 1 %} selected {% endif %} value="12">December</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content table-responsive clearfix">
+                    <table class="no-border datatable table-striped">
+                      <thead class="no-border">
+                        <tr>
+                          <th>Campaign</th>
+                          <th>Type</th>
+                          <th>Budget Month</th>
+                          <th>Mail Pieces</th>
+                          <th>Email</th>
+                          <th>Leads</th>
+                          <th>Cars Sold</th>
+                          <th>Gross Profit</th>
+                          <th>RO</th>
+                          <th>RO Total</th>
+                          <th>Cost</th>
+                          <th>Days Active</th>
+                          <th>Status</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody class="no-border-x no-border-y">
+                        {% for n in local.campaign %}
+                        <tr>
+                          <td><a href="campaign-detail-page.html">{{n.name}}</a></td>
+                          {% if n.type == 1 %}
+                          <td>
+                            <i class="fa fa-car"></i>
+                            
+                          </td>
+                          {% elif n.type == 2 %}
+                          <td>
+                            
+                            <i class="fa fa-wrench"></i>
+                          </td>
+                          {% elif n.type == 3 %}
+                          <td>
+                            <i class="fa fa-car"></i>
+                            <i class="fa fa-wrench"></i>
+                          </td>
+                          {% endif %}
+                          
+                          {% if n.budgetmonth == 1 %}
+                          <td>January</td>
+                          {% elif n.budgetmonth == 2 %}
+                          <td>February</td>
+                          {% elif n.budgetmonth == 3 %}
+                          <td>March</td>
+                          {% elif n.budgetmonth == 4 %}
+                          <td>April</td>
+                          {% elif n.budgetmonth == 5 %}
+                          <td>May</td>
+                          {% elif n.budgetmonth == 6 %}
+                          <td>June</td>
+                          {% elif n.budgetmonth == 7 %}
+                          <td>July</td>
+                          {% elif n.budgetmonth == 8 %}
+                          <td>August</td>
+                          {% elif n.budgetmonth == 9 %}
+                          <td>September</td>
+                          {% elif n.budgetmonth == 10 %}
+                          <td>October</td>
+                          {% elif n.budgetmonth == 11 %}
+                          <td>November</td>
+                          {% elif n.budgetmonth == 12 %}
+                          <td>December</td>
+                          {% endif %}
+                          <td>{{n.totalmail}}</td>
+                          <td>{{n.totalemail}}</td>
+                          <td>0</td>
+                          <td>{{n.froi.car}}</td>
+                          <td>${{n.froi.grossprofit}}</td>
+                          <td>{{n.froi.service}}</td>
+                          <td>${{n.froi.invoiced}}</td>
+                          <td>${{n.totalcost}}</td>
+                          <td>3/30</td>
+                          {% if n.status == 1 %}
+                          <td><span id="{{n.id}}_status" ><span  onclick="openmodal({{n.status}},{{n.id}})" class="label label-success cursor_style">Execute</span></span></td>
+                          {% elif n.status == 2 %}
+                          <td><span id="{{n.id}}_status" ><span onclick="openmodal({{n.status}},{{n.id}})" class="label label-success cursor_style">Scheduled</span></span></td>
+                          {% endif %}
+                          <td>
+                            <a href="#" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+                            <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-times"></i></a>
+                          </td>
+                        </tr>
+                         {% endfor %}
+                        
+                      </tbody>
+                      
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <p class="text-right">
+              <a href="#" class="btn btn-primary">Save</a>
+            </p>
+          </div>
+        </div>
+      </div>
+		
+		  </div>
+		</div> 
+		
+	</div>
+	<input value="{{local.smonth}}" type="hidden" id="budgeth"/>
+	<script type="text/javascript">
+    function isavailablezero(str)
+    {
+        var str = String(str);
+        var arr = str.split(" ");
+        for (i=0;i<arr.length;i++)
+        {
+           var temp = parseInt(arr[i]);
+           if(temp==0)
+           {
+               
+               return 1;
+           }
+        }
+        return 0;
+    }
+    function isavailableanother(str)
+    {
+        var str = String(str);
+        var arr = str.split(",");
+        for (i=0;i<arr.length;i++)
+        {
+           var temp = parseInt(arr[i]);
+           if((temp==1) || (temp==2) ||(temp == 3) || (temp == 4) || (temp == 5) || (temp == 6) || (temp == 7) || (temp == 8) || (temp == 9) || (temp == 10)) 
+           {
+               
+               return 1;
+           }
+        }
+        return 0;
+    }
+    $(document).ready(function(){
+       $('.multiselect').multiselect();
+       $('#selectedid').val('{{local.dealer.id}}');
+       $('#selected_dealer_name').html('{{local.dealer.name}}');
+       $('#selectedkeyid').val('{{local.dealer.keyid}}');
+    });
+    function dealer_ajax_loading()
+    {
+        var keyid = $('#selectedkeyid').val();
+        location.href = "http://127.0.0.1:8000/dealership/setup/campaign/?id=" + keyid; 
+    }
+    function openmodal(status,cid)
+    {
+    	if (status == '1')
+    	{
+    	   $('#campaignstatus').find('option[value="1"]').attr("selected",true);
+    	}
+    	else
+    	{
+    	   $('#campaignstatus').find('option[value="2"]').attr("selected",true);
+    	}
+    	$('#campaignId').val(cid);
+    	$('#modal-create-campaign').modal();
+    }
+    function changestatus()
+    {
+       cid = $('#campaignId').val();
+       status = $('#campaignstatus').val();
+       $('#modal_container').showLoading(); 
+       $.get('/campaign/statuschange/',
+	   {
+	      cid:cid,status:status
+	   },
+	   function(data, status)
+	   {
+          $('#'+cid+'_status').html(data);
+          $('#modal_container').hideLoading();
+          $('#modal-create-campaign').modal('hide');       
+       });
+       
+    }
+    function getbudgetmonth()
+    {
+       var option  = $('#budgetmonth').val();
+       var poption = $('#budgeth').val();
+       var flag    = true; 
+      if ((option == null) && (option == undefined))
+      {
+          $('#budgetmonth option[value="0"]').prop('selected', true);
+          $('#budgetmonth').multiselect('refresh');
+      }
+      else
+      {
+	      if((isavailablezero(poption)==1)&&(isavailableanother(option)==1))
+	      {
+	      	
+	      	$('#budgetmonth option[value="0"]').prop('selected', false);
+	      	$('#budgetmonth').multiselect('refresh');
+	      	flag        = false;  
+	      }
+	      if(flag)
+	      {
+	         if((isavailableanother(poption)==1)&&(isavailablezero(option)==1))
+	         {
+	      	    $('#budgetmonth option[value="1"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="2"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="3"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="4"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="5"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="6"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="7"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="8"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="9"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="10"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="11"]').prop('selected', false);
+	      	    $('#budgetmonth option[value="12"]').prop('selected', false);
+	      	    $('#budgetmonth').multiselect('refresh');
+	      	    
+	      	     
+	         }
+	      }
+      }
+       var option  = $('#budgetmonth').val();
+       $('#budgeth').val(option);
+      
+       
+       
+       var param = $('#budgetmonth').val();
+       $('#budgeth').val(param);
+       param1   = $('#budgeth').val();
+       var dealerid = $('#selectedid').val();
+       
+       $('#ajaxcontainer').showLoading();
+       $.get('/campaign/setup/filter/budgetmonth/',
+	   {
+	      id:dealerid,budget:param1
+	   },
+	   function(data, status)
+	   {
+           $('#ajaxcontainer').html(data);
+           
+           $('#ajaxcontainer').hideLoading();
+       });
+       
+    } 
+  </script>
+  <div class="modal fade" id="modal-create-campaign">
+  <div id="modal_container" class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <label class="col-sm-3 control-label">Campaign Status</label>
+            <div class="col-sm-3">
+              <select  id="campaignstatus" class="form-control">
+                <option value="1">Execute</option>
+                <option value="2">Shedule</option>
+                
+              </select>
+            </div>
+        <input type="hidden" id="campaignId" value=""/>
+        </form>
+      </div>
+      
+      <div style="margin-top:40px" class="modal-footer">
+        <button onclick="changestatus()" type="button" class="btn btn-primary">Change Status</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

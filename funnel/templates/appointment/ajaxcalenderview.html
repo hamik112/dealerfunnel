@@ -1,0 +1,28 @@
+{% load dealerfunnel_filters %}
+<script>
+$(document).ready(function () {
+$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			defaultDate: '2016-01-5',
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				{% for item in local.obj %}
+				{
+                    title: '{{item.appdate|date:"g:i A"}} {{item.fname}} {{item.lname}}',
+                    start: '{{item.appdate|date:"Y-m-d"}}',
+                    color: '{{item.appstatus|getappcolor}}',
+                    url:   'http://dealerfunnel.com/customer/profile/?cid={{item.customerid}}'
+                },
+				{% endfor %}
+				
+			]
+		});
+		
+	});
+
+</script>

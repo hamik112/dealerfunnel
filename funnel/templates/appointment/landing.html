@@ -1,0 +1,540 @@
+	<div id="pcont" class="container-fluid">
+		<div class="page-head ">
+	    <div class="row">
+	      <div class="col-sm-6">
+	        <h2>Appointments</h2>
+	        <ol class="breadcrumb">
+	          <li><a href="#">Home</a></li>
+	          <li class="active">Appointment</li>
+	        </ol>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="cl-mcont">
+	  	<div class="appt-intro">
+	  		Show appointments for 
+	  		<div class="dropdown">
+	  			<a id='selectcampaign' href="#" data-toggle="dropdown">All Campaigns</a>
+	  			<ul id='activecampaigncontainer' class="dropdown-menu animated flipInX">
+	  				<li><a href="#">Campaign</a></li>
+	  				<li><a href="#">Campaign</a></li>
+	  				<li><a href="#">Campaign</a></li>
+	  			</ul>
+	  		</div>  
+	  		<div id="appreportrange" class="reportrange" style="border: 0; background: none;">
+            <i class="icon-calender"></i>
+            <span></span> 
+            <b class="caret"></b>
+          </div>
+	  		with 
+	  		<div class="dropdown">
+	  			<a id='labelnameid' href="#" data-toggle="dropdown">Any</a>
+	  			<ul class="dropdown-menu animated flipInX">
+	  			    <li><a onclick="filterbylabel('Any','n')"  href="javascript:void(0)">Any</a></li>
+	  				<li><a onclick="filterbylabel('Hot','1')"  href="javascript:void(0)">Hot</a></li>
+	  				<li><a onclick="filterbylabel('Cold','2')"  href="javascript:void(0)">Cold</a></li>
+	  				<li><a onclick="filterbylabel('Sold','3')"  href="javascript:void(0)">Sold</a></li>
+	  				<li><a onclick="filterbylabel('Warm','4')"  href="javascript:void(0)">Warm</a></li>
+	  				<li><a onclick="filterbylabel('Follow Up','5')"  href="javascript:void(0)">Follow Up</a></li>
+	  				<li><a onclick="filterbylabel('Dead','6')"  href="javascript:void(0)">Dead</a></li>
+	  			</ul>
+	  		</div>  
+	  		Status
+	  	</div>
+
+	  	<!-- Stat -->
+	  	<div class="stats_bar row customer-stat-group">
+	  		<div id='appboxid'>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  				<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-hourglass stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">
+              			<img src="/media/ajaxloader/713.gif">
+              	</h4>
+        				
+          		</div>
+          	</div>
+          </div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-calender stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">
+              		<img src="/media/ajaxloader/713.gif">
+              	</h4>
+        		     
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-like stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">
+              	    <img src="/media/ajaxloader/713.gif">
+              	</h4>
+        			
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-dislike stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">
+              	    <img src="/media/ajaxloader/713.gif">
+              	</h4>
+        		
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-graph stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">
+              	    <img src="/media/ajaxloader/713.gif">
+              	</h4>
+          		</div>
+          	</div>
+          </div>
+          </div>
+          </div>
+	  		</div>
+	  	</div>
+	  	<!-- Tab content -->
+
+	    <ul class="nav nav-tabs" id="tab-appt-ct">
+	    	<li class="active"><a onclick='getappdataview()' href="#tab-appointment" data-toggle="tab">Appointments</a></li>
+	    	<li><a onclick="getajaxcalenderview()" href="#tab-calendar" data-toggle="tab">Calendar View</a></li>
+	    </ul>
+	    <div class="tab-content">
+	    	<div class="tab-pane active" id="tab-appointment">
+	    		
+	    	</div>
+	    	<div class="tab-pane" id="tab-calendar">
+	    		<div id="calendar"></div>
+	    	</div>
+	    </div>
+		</div>
+	</div> 
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-status">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Status</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+        	<div class="form-group">
+        		<label class="control-label col-sm-3">Change Status</label>
+        		<div class="col-sm-6">
+        			<select id='modalstatusid' class="form-control">
+        				<option value='1'>Hot</option>
+        				<option value='2'>Cold</option>
+        				<option value='3'>Sold</option>
+        				<option value='4'>Warm</option>
+        				<option value='5'>Follow Up</option>
+        				<option value='6'>Dead</option>
+        			</select>
+        		</div>
+        	</div>
+        	
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button onclick='changelabel()' type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-appt-status">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Appointment Status</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+        	<div class="form-group">
+        		<label class="control-label col-sm-3">Change Status</label>
+        		<div class="col-sm-6">
+        			<select id='appstatusid' class="form-control">
+        				<option value='1'>Pending</option>
+        				<option value='2'>Showed</option>
+        				<option value='3'>No Show</option>
+        				<option value='4'>Rescheduled</option>
+        			</select>
+        		</div>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button onclick='save_app_status()' type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-note">
+     
+</div>
+<!-- Modal -->
+<div class="modal fade" tabindex="-1" role="dialog" id="modal-reschedule"></div>
+<!-- /.modal -->
+<input type='hidden' id='startdate' value='{{local.startdate|date:"Y-m-d"}}'/>
+<input type='hidden' id='enddate' value='{{local.enddate|date:"Y-m-d"}}'/>
+<input type='hidden' id='count' value=''/>
+<input type='hidden' id='cmpid' value='n'/>
+<input type='hidden' id='labelid' value='n'/>
+<input type='hidden' id='barcode_id' value=''/>
+<input type='hidden' id='appstatusid' value=''/>
+<input type='hidden' id='sortcolumid' value = '2'/>
+<input type='hidden' id='sortflagid' value = '1'/>
+<input type='hidden' id='iscalenderload' value = '0'/>
+<input type='hidden' id='isdataload' value = '0'/>
+<input type='hidden' id='viewflag' value = '1'/> 
+<!-- Calendar -->
+<div id='ajaxcalenderviewscriptid'></div>
+<script>
+function getappdataview()
+{
+   $('#viewflag').val('1');
+}
+function getajaxcalenderview()
+{
+   
+   $('#viewflag').val('2');
+   var flag        = $('#iscalenderload').val();
+   if(flag == '0')
+   {
+	   $('#appajaxloaderid').css('display','');
+	   $('#appviewid').css('display','none');
+	   var dealerid    = $('#selectedid').val();
+	   var startdate   = $('#startdate').val(); 
+	   var enddate     = $('#enddate').val();
+	   var cmpid       = $('#cmpid').val();
+	   var label       = $('#labelid').val();
+	   $('#calendar').html('');
+	   $.get( "/appointment/ajaxcalenderview/", {cmpid:cmpid,dealerid:dealerid,startdate:startdate,enddate:enddate,label:label}, function( data ) {
+	  		     $('#ajaxcalenderviewscriptid').html(data);
+	  		     $('#appajaxloaderid').css('display','none');
+	             $('#appviewid').css('display','');
+	             $('#iscalenderload').val('1');
+	   		     // Calendar render
+	    		 $('#tab-appt-ct a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+			  		$('#calendar').fullCalendar('render')
+				 })
+	      });
+   }   
+}
+function filterbylabel(name,label)
+{
+   $('#labelid').val(label);
+   $('#labelnameid').html(name);
+   $('#iscalenderload').val('0');
+   setapplead();
+   setappbox();   
+}
+
+function save_reschedule()
+{
+   var datepickerid = $('#datepickerid').val();
+   var timepickerid = $('#timepickerid').val();
+   var barcode      = $('#barcode_id').val();
+   var status       = $('#reschedulestatusid').val();
+   $('#modal-reschedule').showLoading();
+   $.get( "/appointment/savereschedule/", {barcode:barcode,app_status:status,app_date:datepickerid,app_time:timepickerid}, function( data ) {
+  		     var obj = jQuery.parseJSON(data);
+  		     $('#appstatus_'+barcode).html(obj.status);
+  		     $('#datetime_'+barcode).html(obj.datetime);
+  		     $('#modal-reschedule').hideLoading();
+  		     $("#modal-reschedule").modal('hide');
+  		     setappbox();
+    });
+}
+function getreschedulemodal(barcode)
+{
+    $('#barcode_id').val(barcode);
+    $.get( "/appointment/reschedulemodal/", {barcode:barcode}, function( data ) {
+  		     $('#modal-reschedule').html(data);
+  			 $("#modal-reschedule").modal();
+    });
+}
+function filterbycampaing(cmp,cmpname)
+{
+   $('#cmpid').val(cmp);
+   $('#sortcolumid').val(2);
+   $('#sortflagid').val(1);
+   $('#selectcampaign').html(cmpname);
+   $('#iscalenderload').val('0');
+   setapplead();
+   setappbox();
+}
+function sorting(column)
+{
+   var sortcolum = parseInt($('#sortcolum').val());
+   var sortflag  = parseInt($('#sortflag').val());
+   var column    = parseInt(column);
+   if(column == sortcolum)
+   {
+       if(sortflag == 1)
+       {
+          $('#sortflagid').val(0);
+       }
+       else
+       {
+          $('#sortflagid').val(1);
+       }
+   }
+   else
+   {
+       $('#sortcolumid').val(column);
+       $('#sortflagid').val(1);
+   }
+   setapplead();
+}
+function savenewnotes()
+{
+    var barcode     = $('#barcode_id').val();
+    var notes       = $('#newnotes').val();
+    $('#modal-note').showLoading();
+    if(notes.length>0)
+    {
+        $.get( "/appointment/addnotes/", {barcode:barcode,comment:notes}, function( data ) {
+  		     obj = JSON.parse(data)
+  			 $('#notes_'+barcode).html(obj.count);
+  			 $('#modal-note').hideLoading();
+  			 $("#modal-note").modal('hide');
+        });
+    }
+}
+
+function getnotemodal(barcode)
+{ 
+   $('#barcode_id').val(barcode);
+   $.get( "/appointment/modalnotes/", {barcode:barcode}, function( data ) {
+  		     $("#modal-note").html( data );
+  			 $("#modal-note").modal();
+   });
+   
+   
+   
+}
+
+function save_app_status()
+{
+   var barcode     = $('#barcode_id').val();
+   var appstatus   = $('#appstatusid').val();
+   $('#modal-appt-status').showLoading();
+   $.get( "/appointment/appstatuschange/", {barcode:barcode,appstatus:appstatus}, function( data ) {
+  		     $("#appstatus_" + barcode).html( data );
+  			 $('#modal-appt-status').hideLoading();
+  			 $('#modal-appt-status').modal('hide');
+   });
+}
+function appstatuschange(app,barcode)
+{
+   $('#appstatusid').val(app);
+   $('#barcode_id').val(barcode);
+   $('#modal-appt-status').modal();
+}
+function changelabel()
+{
+   var barcode = $('#barcode_id').val();
+   var label   = $('#modalstatusid').val();
+   $('#modal-status').showLoading();
+   $.get( "/appointment/labelchange/", {barcode:barcode,label:label}, function( data ) {
+  		     $("#label_" + barcode).html( data );
+  			 $('#modal-status').hideLoading();
+  			 $('#modal-status').modal('hide');
+   });
+}
+function labelchange(label,barcode)
+{
+   $('#modalstatusid').val(label);
+   $('#barcode_id').val(barcode);
+   $('#modal-status').modal();
+}
+function prevpage()
+{
+   var dealerid    = $('#selectedid').val();
+   var startdate   = $('#startdate').val(); 
+   var enddate     = $('#enddate').val();
+   var cmpid       = $('#cmpid').val();
+   var label       = $('#labelid').val();
+   var totalpage   = parseInt($('#totalpage').val());
+   var currentpage = parseInt($('#currentpage').val());
+   currentpage--;
+   if(currentpage>=1)
+   {
+      $('#tab-appointment').showLoading();
+   	  $.get( "/appointment/pagin/", {page:currentpage,cmpid:cmpid,dealerid:dealerid,startdate:startdate,enddate:enddate,label:label}, function( data ) {
+  		     $("#tab-appointment").html( data );
+  			 $('#tab-appointment').hideLoading();
+      });
+   }
+}
+function nextpage()
+{
+   var dealerid    = $('#selectedid').val();
+   var startdate   = $('#startdate').val(); 
+   var enddate     = $('#enddate').val();
+   var cmpid       = $('#cmpid').val();
+   var label       = $('#labelid').val();
+   var totalpage   = parseInt($('#totalpage').val());
+   var currentpage = parseInt($('#currentpage').val());
+   currentpage++;
+   if(currentpage<=totalpage)
+   {
+      $('#tab-appointment').showLoading();
+   	  $.get( "/appointment/pagin/", {page:currentpage,cmpid:cmpid,dealerid:dealerid,startdate:startdate,enddate:enddate,label:label}, function( data ) {
+  		     $("#tab-appointment").html( data );
+  			 $('#tab-appointment').hideLoading();
+      });
+   }
+}
+function setactivecampaign()
+{
+   var dealerid = $('#selectedid').val();
+   $.get( "/appointment/activecampaign", {dealerid:dealerid}, function( data ) {
+  		     $("#activecampaigncontainer").html( data );
+  			
+   });
+}
+function setapplead()
+{
+   $('#isdataload').val('1');
+   var dealerid   = $('#selectedid').val();
+   var startdate  = $('#startdate').val(); 
+   var enddate    = $('#enddate').val();
+   var cmpid      = $('#cmpid').val();
+   var label      = $('#labelid').val();
+   var sortcolumn = $('#sortcolumid').val();
+   var sortflag   = $('#sortflagid').val();
+   
+   $('#tab-appointment').showLoading();
+   $.get( "/appointment/lead/", {sortcolumn:sortcolumn,sortflag:sortflag,cmpid:cmpid,dealerid:dealerid,startdate:startdate,enddate:enddate,label:label}, function( data ) {
+  		     $("#tab-appointment").html( data );
+  			 $('#tab-appointment').hideLoading();
+   });
+   
+}
+function setappbox()
+{
+   var dealerid  = $('#selectedid').val();
+   var startdate = $('#startdate').val(); 
+   var enddate   = $('#enddate').val();
+   var cmpid     = $('#cmpid').val();
+   var label     = $('#labelid').val();
+   $.get( "/appointment/box/", {cmpid:cmpid,dealerid:dealerid,startdate:startdate,enddate:enddate,label:label}, function( data ) {
+  		     $("#appboxid").html( data );
+  			 
+   });
+   
+}    
+</script>
+
+
+<script>
+
+	$(document).ready(function() {
+        setactivecampaign();
+        setapplead();	
+        setappbox();	
+		$('#appreportrange').daterangepicker(
+       {
+          startDate: moment().subtract('days',30),
+          endDate: moment().add('days',30),
+          minDate: '01/01/2013',
+          maxDate: '12/31/2016',
+          dateLimit: { days: 1000 },
+          showDropdowns: true,
+          showWeekNumbers: true,
+          timePicker: false,
+          timePickerIncrement: 1,
+          timePicker12Hour: true,
+          ranges: {
+             'Today': [moment(), moment()],
+             'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+             'Last 7 Days': [moment().subtract('days', 6), moment()],
+             'Last 30 Days': [moment().subtract('days', 30), moment()],
+             'This Month': [moment().startOf('month'), moment().endOf('month')],
+             'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')],
+             '30+30'     : [moment().subtract('days',30),moment().add('days',30)],
+             'This Year' : [moment().startOf('year'), moment().endOf('year')],
+             'Last Year' : [moment().subtract('year', 1).startOf('year'), moment().subtract('year', 1).endOf('year')],   
+          },
+          opens: 'right',
+          buttonClasses: ['btn'],
+          applyClass: 'btn-sm btn-primary',
+          cancelClass: 'btn-sm btn-inverse',
+          format: 'MM/DD/YYYY',
+          separator: ' to ',
+          locale: {
+              applyLabel: 'Submit',
+              fromLabel: 'From',
+              toLabel: 'To',
+              customRangeLabel: 'Custom Range',
+              daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+              monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+              firstDay: 1
+          }
+       },
+       function(start, end) 
+       {
+        	$('#startdate').val(start.format('YYYY-MM-DD'));
+        	$('#enddate').val(end.format('YYYY-MM-DD')); 
+        	$('#appreportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        	$('#iscalenderload').val('0');
+        	setapplead();
+        	setappbox();
+       }
+    );
+    $('#appreportrange span').html(moment().subtract('days', 30).format('MMMM D, YYYY') + ' - ' + moment().add('days', 30).format('MMMM D, YYYY'));
+    
+		
+		
+});
+	
+</script>
+

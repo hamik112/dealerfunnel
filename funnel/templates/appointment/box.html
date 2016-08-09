@@ -1,0 +1,86 @@
+	  		{% load dealerfunnel_filters %}
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  				<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-hourglass stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">{{local.Pending}}</h4>
+        				<p class="stat-title">Pending</p>
+          		</div>
+          	</div>
+          </div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-calender stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	{% if local.Rescheduled == 0 %}
+              	<h4 class="stat-counter">0.00%</h4>
+              	{% endif %}
+              	{% if local.Rescheduled > 0 %}
+              	<h4 class="stat-counter">{{local.Rescheduled|group}}%</h4>
+        		{% endif %}
+        		<p class="stat-title">Rescheduled</p>
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-like stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">{{local.Show}}</h4>
+        				<p class="stat-title">Show</p>
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-dislike stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">{{local.Noshow}}</h4>
+        				<p class="stat-title">No Show</p>
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-graph stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	{% if local.Showrate == 0 %}
+              	<h4 class="stat-counter">0.00%</h4>
+        		{% endif %}
+        		{% if local.Showrate > 0 %}
+              	<h4 class="stat-counter">{{local.Showrate|group}}%</h4>
+        		{% endif %}
+        				<p class="stat-title">Show Rate</p>
+          		</div>
+          	</div>
+          </div>
+          </div>
+	  		</div>

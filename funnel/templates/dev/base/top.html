@@ -1,0 +1,50 @@
+  <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-options"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><strong>Dealer</strong>Funnel</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        {% if dealer.isshow = 1 %}
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="selected_dealer_name" >{{ dealer.selecteddealer.name }}</span><b class="caret"></b></a>
+            <ul class="dropdown-menu animated fadeInDown">
+              {% for n in dealer.dealerlist  %}
+              <li><a onclick="dealerrequest('{{n.id}}','{{n.name}}','{{n.keyid}}')" href="javascript:void(0)">{{ n.name }}</a></li>
+              {% endfor %}
+               
+            </ul>
+          </li>
+         
+        </ul>
+        {% endif %}
+        <input type="hidden" id="selectedid" value="{{ dealer.select_id }}"/>
+        <input type="hidden" id="selectedkeyid" value="{{ dealer.keyid }}"/>
+    		<ul class="nav navbar-nav navbar-right user-nav">
+	        <li class="dropdown profile_menu">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="toolbar-avatar"><img alt="" src="{{userinfo.image}}" /></span><span>{{userinfo.name}}</span> <b class="caret"></b></a>
+	          <ul class="dropdown-menu animated flipInX">
+	            <li><a href="/setting/account"><i class="icon-settings"></i> Settings</a></li>
+	            <li class="divider"></li>
+	            <li><a href="/logout"><i class="icon-logout"></i> Sign Out</a></li>
+	          </ul>
+	        </li>
+	     </ul>     		
+
+      </div><!--/.nav-collapse animate-collapse -->
+      <button class="btn-toggle-mainnav" type="button"><i class="icon-menu"></i></button>
+    </div>
+  </div>
+  <script>
+  function dealerrequest(dealerid,dealername,keyid)
+  {
+     $('#selectedid').val(dealerid);
+     $('#selected_dealer_name').html(dealername);
+     $('#selectedkeyid').val(keyid);
+     $.get('/ajax/dealer/select/',{select_id:dealerid},function(data, status){});
+     dealer_ajax_loading();
+  }
+  </script>

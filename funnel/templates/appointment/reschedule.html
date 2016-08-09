@@ -1,0 +1,47 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Reschedule</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+        	<div class="form-group">
+        	<div class="col-sm-4">
+        		<label>Date</label>
+        		<input type="text" id='datepickerid' class="form-control datepicker" value='{{local.app.appdate|date:"m/d/Y"}}'>
+        	</div>
+        	<div class="col-sm-4">
+        		<label>Time</label>
+        		<input id='timepickerid' type="text" class="form-control timepicker" value='{{local.app.appdate|date:"h:i A"}}'>
+        	</div>
+        	<div class="col-sm-4">
+        		<label>Status</label>
+        		<select id='reschedulestatusid' class="form-control">
+        			<option {% if local.app.appstatus == 1 %}  selected {% endif %} value='1'>Pending</option>
+        			<option {% if local.app.appstatus == 2 %}  selected {% endif %} value='2'>Show</option>
+        			<option {% if local.app.appstatus == 3 %}  selected {% endif %} value='3'>No Show</option>
+        			<option {% if local.app.appstatus == 4 %}  selected {% endif %} value='4'>Rescheduled</option>
+        		</select>
+        	</div>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button onclick='save_reschedule()' type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+  <script>
+  // Calendar in bootstrap tab
+	$(document).ready(function () {
+    	$('.datepicker').datepicker(
+    	{
+    	    onSelect: function(dateText) 
+    	    {
+    		    $('#reschedulestatusid').val(4);		  
+  			}
+    	});
+});
+  </script>

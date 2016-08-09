@@ -1,0 +1,66 @@
+<div id="cl-wrapper" class="fixed-menu">
+	<ul class="funnel-mainnav">
+    <li {% if menu.base == 'DASHBOARD' %}  class="active" {% endif %} >
+	    <a href="{% url 'dashboard_landing' %}">
+		    <i class="icon-speedometer"></i> 
+		    <span>Dashboard</span>
+	    </a>
+    </li>
+    <li {% if menu.base == 'CAMPAIGN' %}  class="active" {% endif %} >
+	    <a href="{% url 'campaign_landing' %}">
+		    <i class="icon-folder"></i> 
+		    <span>Campaigns</span>
+	    </a>
+    </li>
+    <li {% if menu.base == 'CUSTOMER' %}  class="active" {% endif %} >
+	    <a href="{% url 'customer_landing' %}">
+	    	<i class="icon-user"></i> 
+	    	<span>Customers</span>
+	    </a>
+    </li>
+    <li>
+    	<a href="{% url 'leads_landing' %}">
+    		<i class="icon-star"></i> 
+    		<span>Leads</span> 
+    	</a>
+    </li>
+    <li >
+    	<a href="{% url 'appointment_landing' %}">
+    		<i class="icon-clock"></i> 
+    		<span>Appointments</span> 
+    	</a>
+    </li>
+    <li {% if menu.base == 'HISTORICAL' %}  class="active" {% endif %} >
+     	<a href="{% url 'reports_historical' %}">
+     		<i class="icon-reload"></i>  
+     		<span>Historical</span>
+     	</a>
+    </li>
+
+    <li {% if menu.base == 'MARKETANALYSIS' %}  class="active" {% endif %}>
+    	<a href="{% url 'reports_marketanalysis' %}">
+    		<i class="icon-graph"></i>  
+    		<span>Market Analysis</span>
+    	</a>
+    </li>
+    <li {% if menu.base == 'ROI' %}  class="active" {% endif %}>
+    	<a href="{% url 'reports_roi' %}">
+    		<i class="icon-pie-chart"></i>  
+    		<span>ROI</span>
+    	</a>
+    </li>
+    {% if userinfo.type = 1 %}
+   	<li {% if menu.base == 'DEALERSHIP' %}  class="active" {% endif %} >
+   		<a href="{% url 'dealership_landing' %}">
+   			<i class="flaticon-business-bag"></i>  
+   			<span>Dealerships</span>
+   		</a>
+   	</li>
+   	<li {% if menu.base == 'USER' %}  class="active" {% endif %} >
+   		<a href="{% url 'user_landing' %}">
+   			<i class="icon-user"></i>  
+   			<span>Users</span>
+   		</a>
+   	</li>
+  {% endif %}
+  </ul>

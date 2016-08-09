@@ -1,0 +1,40 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="border-bottom: 1px solid #ddd;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Note</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+        	
+        	{% for item in local.notes %}
+        	<div class="current-note">
+	        	<div class="note-name"><strong>{{item.agent}}</strong> Says:</div>
+	        	<div class="note-ct">{{item.comment}}</div>
+        	</div>
+        	{% endfor %}
+        	<div class="form-row">
+        		<label><strong>New Note</strong></label>
+        		<textarea id='newnotes' class="form-control"></textarea>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button onclick='savenewnotes()' type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+
+ 	<style type="text/css" media="screen">
+  .current-note {
+  	margin-bottom: 15px;
+  }	
+  .note-name {}
+  .note-ct {
+  	padding: 10px 15px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  </style>

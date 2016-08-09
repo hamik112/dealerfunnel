@@ -1,0 +1,25 @@
+<div id="pcont" class="container-fluid">
+
+</div>
+<script type="text/javascript">
+    
+    function dealerload()
+    {
+       $('#pcont').showLoading();
+    	$.get('/campaign/load/by/dealer/',
+	    {},
+	    function(data, status) 
+	    {  
+          $('#pcont').html(data);
+          $('#pcont').hideLoading();
+          
+        });
+    }
+    $(document).ready(function(){
+    	dealerload();
+    });
+    function dealer_ajax_loading()
+    {
+        dealerload();
+    }
+  </script>

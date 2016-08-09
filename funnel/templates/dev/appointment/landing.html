@@ -1,0 +1,547 @@
+	<div id="pcont" class="container-fluid">
+		<div class="page-head ">
+	    <div class="row">
+	      <div class="col-sm-6">
+	        <h2>Appointment</h2>
+	        <ol class="breadcrumb">
+	          <li><a href="#">Home</a></li>
+	          <li class="active">Appointment</li>
+	        </ol>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="cl-mcont">
+	  	<div class="appt-intro">
+	  		Show appointments for 
+	  		<div class="dropdown">
+	  			<a href="#" data-toggle="dropdown">All Clients</a>
+	  			<ul class="dropdown-menu animated flipInX">
+	  				<li><a href="#">Client</a></li>
+	  				<li><a href="#">Client</a></li>
+	  				<li><a href="#">Client</a></li>
+	  			</ul>
+	  		</div> 
+	  		<div class="dropdown">
+	  			<a href="#" data-toggle="dropdown">All Campaigns</a>
+	  			<ul class="dropdown-menu animated flipInX">
+	  				<li><a href="#">Campaign</a></li>
+	  				<li><a href="#">Campaign</a></li>
+	  				<li><a href="#">Campaign</a></li>
+	  			</ul>
+	  		</div>  
+	  		<div id="reportrange" class="reportrange" style="border: 0; background: none;">
+            <i class="icon-calender"></i>
+            <span></span> 
+            <b class="caret"></b>
+          </div>
+	  		with 
+	  		<div class="dropdown">
+	  			<a href="#" data-toggle="dropdown">Any</a>
+	  			<ul class="dropdown-menu animated flipInX">
+	  				<li><a href="#">Hot</a></li>
+	  				<li><a href="#">Cold</a></li>
+	  				<li><a href="#">Sold</a></li>
+	  			</ul>
+	  		</div>  
+	  		Status
+	  	</div>
+
+	  	<!-- Stat -->
+	  	<div class="stats_bar row customer-stat-group">
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  				<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-user-follow stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">2,264</h4>
+        				<p class="stat-title">Pending</p>
+          		</div>
+          	</div>
+          </div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-user-follow stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">5.6%</h4>
+        				<p class="stat-title">Rescheduled</p>
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-user-follow stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">732</h4>
+        				<p class="stat-title">Show</p>
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-user-follow stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">34</h4>
+        				<p class="stat-title">No Show</p>
+          		</div>
+          	</div>
+          	</div>
+          </div>
+	  		</div>
+	  		<div class="item-col-5">
+	  			<div class="stat-item block">
+	  			<div class="content">
+            <div class="media">
+          		<div class="media-object pull-left">
+          			<i class="icon-user-follow stat-icon"></i>
+          		</div>
+          		<div class="media-body">
+              	<h4 class="stat-counter">22.8%</h4>
+        				<p class="stat-title">Show Rate</p>
+          		</div>
+          	</div>
+          </div>
+          </div>
+	  		</div>
+	  	</div>
+	  	<!-- Tab content -->
+
+	    <ul class="nav nav-tabs">
+	    	<li class="active"><a href="#tab-appointment" data-toggle="tab">Appointments</a></li>
+	    	<li><a href="#tab-calendar" data-toggle="tab">Calendar View</a></li>
+	    </ul>
+	    <div class="tab-content">
+	    	<div class="tab-pane active" id="tab-appointment">
+	    		<div class="row">
+	    			<table class="table table-striped table-hovered datatable">
+	    				<thead class="no-border">
+	    					<tr>
+	    						<th class="no-border"></th>
+	    						<th>Name</th>
+	    						<th>Campaign</th>
+	    						<th>Date & Time</th>
+	    						<th class="text-center">Status</th>
+	    						<th class="text-center">Appt.Status</th>
+	    						<th class="text-center">Notes</th>
+	    						<th>Last Activity</th>
+	    						<th class="text-center no-border">Action</th>
+	    					</tr>
+	    				</thead>
+	    				<tbody class="no-border-x no-border-y">
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					<tr>
+	    						<td class="text-center no-border"><input type="checkbox"></td>
+	    						<td><a href="#">John Doe Very Long Long Name</a></td>
+	    						<td><a href="#"><strong>Burns Chevrolet Cadillac</strong></a><br><small>#24656-Refi with Tax Voucher</small></td>
+	    						<td><span class="date-time">Friday, March 18th @ 09:00 AM</span></td>
+	    						<td class="text-center"><a href="#modal-status" data-toggle="modal" class="label label-hot">Hot</a></td>
+	    						<td class="text-center"><a href="#modal-appt-status" data-toggle="modal" class="label label-pending">Pending</a></td>
+	    						<td><a href="#modal-note" data-toggle="modal"><i class="icon-doc"></i> 2</a></td>
+	    						<td><span class="date-time"><time class="timeago" datetime="2016-03-05 20:09-0700"></time></span></td>
+	    						<td class="text-center no-border">
+	    							<div class="dropdown table-action">
+	    							<a href="#" class="btn btn-default btn-sm" data-toggle="dropdown">Actions <i class="fa fa-caret-down"></i></a>
+	    							<ul class="dropdown-menu  animated flipInX">
+	    								<li><a href="#">Reschedule</a></li>
+	    								<li><a href="#">Assign Owner</a></li>
+	    								<li><a href="#">Call</a></li>
+	    								<li><a href="#">Print</a></li>
+	    								<li><a href="#">Delete</a></li>
+	    							</ul>
+	    						</div></td>
+	    					</tr>
+	    					
+	    				
+	    				</tbody>
+	    			</table>
+	    		</div>
+	    	</div>
+	    	<div class="tab-pane" id="tab-calendar">
+	    		<div id="calendar"></div>
+	    	</div>
+	    </div>
+		</div>
+	</div> 
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-status">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Status</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+        	<div class="form-group">
+        		<label class="control-label col-sm-3">Change Status</label>
+        		<div class="col-sm-6">
+        			<select class="form-control">
+        				<option>Hot</option>
+        				<option>Cold</option>
+        				<option>Sold</option>
+        				<option>Warm</option>
+        				<option>Follow Up</option>
+        				<option>Dead</option>
+        			</select>
+        		</div>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-appt-status">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Appointment Status</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+        	<div class="form-group">
+        		<label class="control-label col-sm-3">Change Status</label>
+        		<div class="col-sm-6">
+        			<select class="form-control">
+        				<option>Pending</option>
+        				<option>Showed</option>
+        				<option>No Show</option>
+        				<option>Rescheduled</option>
+        			</select>
+        		</div>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-note">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Note</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+        	<div class="form-group">
+        		<label class="control-label col-sm-3">Add Note</label>
+        		<div class="col-sm-9">
+        			<textarea class="form-control"></textarea>
+        		</div>
+        	</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+		
+
+<!-- Calendar -->
+<script>
+
+	$(document).ready(function() {
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			defaultDate: '2016-01-5',
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+				{
+					title: 'All Day Event',
+					start: '2016-01-01'
+				},
+				{
+					title: 'Long Event',
+					start: '2016-01-07',
+					end: '2016-01-10'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-01-09T16:00:00'
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: '2016-01-16T16:00:00'
+				},
+				{
+					title: 'Conference',
+					start: '2016-01-11',
+					end: '2016-01-13'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-01-12T10:30:00',
+					end: '2016-01-12T12:30:00'
+				},
+				{
+					title: 'Lunch',
+					start: '2016-01-12T12:00:00'
+				},
+				{
+					title: 'Meeting',
+					start: '2016-01-12T14:30:00'
+				},
+				{
+					title: 'Happy Hour',
+					start: '2016-01-12T17:30:00'
+				},
+				{
+					title: 'Dinner',
+					start: '2016-01-12T20:00:00'
+				},
+				{
+					title: 'Birthday Party',
+					start: '2016-01-13T07:00:00'
+				},
+				{
+					title: 'Click for Google',
+					url: 'http://google.com/',
+					start: '2016-01-28'
+				}
+			]
+		});
+		
+	});
+
+
+	// Calendar in bootstrap tab
+	$(document).ready(function () {
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('#calendar').fullCalendar('render');
+    });
+});
+</script>
